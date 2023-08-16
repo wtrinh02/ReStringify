@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Wesley Trinh</title>
+    <title>ReStringify: A Coding Project By Wesley Trinh</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
     <!-- ==== Nav Section ====-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/logoicon.png" class="d-inline-block align-text-top" width="30" height="24"> APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="img/logoicon.png" class="d-inline-block align-text-top" width="30" height="24"> ReStringify</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/wtrinh02/ReStringify">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -53,21 +53,51 @@
     <!-- ==== Main Section ====-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for ReStringify</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call hello World
-                        function HelloWorld(){
-                            alert("Hello World");
+                        //Get the String from the page
+                        function getString(){
+                        
+                            document.getElementById("alert").classList.add("invisible")
+                        
+                            let userString = document.getElementById("userString").value;
+                        
+                            let revString =  reverseString(userString);
+                        
+                            displayString(revString)
+                        }
+                        
+                        //Reverse the String
+                        function reverseString(userString){
+                        
+                            let revString = [];
+                            for(let i = userString.length-1; i >= 0; i--){
+                                revString += userString[i];
+                            }
+                        
+                            return revString
+                        }
+                        
+                        //Display the reversed string to the user
+                        function displayString(reversedString){
+                            
+                            document.getElementById("msg").innerHTML = `Your String Reversed is: ${reversedString}`;
+                            document.getElementById("alert").classList.remove("invisible");
+                        
                         }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structured in three functions.</p>
+                    <h5>getString</h5>
+                    <p>getString is the controller function that calls reverseString and displayString using the user's inputted string. The function starts off by making the alert box invisible by adding "invisible" to its class list. "invisible" is a bootstrap class that makes an object invisible, which is what I want for the alert box until the button is clicked. Then the function gets the inputted string by grabbing it from the DOM using getElementById. getString then uses this string to call reverseString to reverse the string and display it using displayString.</p>
+                    <h5>reverseString</h5>
+                    <p>reverseString reverses the string given by the parameter. To do so the function creates a new string array and loops through the inputted string starting from the end. During each iteration, the current letter is added into the new string. This loop continues on until all letters are added in reverse into the new string. reverseString returns the reversed string of the inputted string"</p>
+                    <h5>displayString</h5>
+                    <p>displayString is a function that displays the reversed string to the user. The function does so by adding a template literal into the message's innerHTML and removing the "invisible" class from the alert, showing the message to the user. </p>
                 </div>
             </div>
         </div>
